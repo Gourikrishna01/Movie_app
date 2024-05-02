@@ -1,9 +1,9 @@
 from django.shortcuts import render
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login as auth_login
 from django.contrib.auth.models import User
 from django.shortcuts import redirect
 from.models import*
-
+from django.contrib import messages
 def index(request):
     return render(request,'index.html')
 
@@ -21,20 +21,18 @@ def register(request):
         return redirect('login')
     else:
         return render(request,'Register.html')
+
+
 def login(request):
-    if request.method == 'POST':
+    if request.method == "POST":
         username = request.POST.get('username')
         password = request.POST.get('password')
-        user = authenticate(username=username, password=password)
-        if user is not None:
-            login(request, user)
-            return redirect('home')  # Redirect to the home page after successful login
-        else:
-            # If authentication fails, you can handle it here, for example, display an error message.
-            error_message = "Invalid username or password"
-            return render(request, 'login.html', {'error_message': error_message})
-    else:
-        return render(request, 'login.html')
-  
+        try:
+            user = User.objects.get(username=username, password=password)
+            return redirect('home')
+        except User.DoesNotExist:
+            messages.error(request, 'Invalid username or password.')
+    return render(request, 'login.html')
+
 def home(request):
     return render(request,'home.html')

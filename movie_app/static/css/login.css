@@ -1,0 +1,68 @@
+/* Style for the login form */
+form {
+    width: 300px;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow effect */
+    background-image: url('movie_background.jpg'); /* Replace 'movie_background.jpg' with your actual image path */
+    background-size: cover; /* Ensure the background image covers the entire form */
+}
+
+/* Style for labels */
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #fff; /* Change label text color to white */
+}
+
+/* Style for input fields */
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* Ensures padding and border are included in the width */
+    background-color: rgba(255, 255, 255, 0.8); /* Add semi-transparent white background */
+}
+
+/* Style for submit button */
+button[type="submit"] {
+    background-color: #4CAF50; /* Green */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Hover effect for submit button */
+button[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+/* Center the form horizontally */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Animation effect */
+input[type="text"]:focus,
+input[type="password"]:focus {
+    animation: input-animation 0.3s ease forwards;
+}
+
+@keyframes input-animation {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.05);
+    }
+}

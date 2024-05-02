@@ -28,6 +28,10 @@ SECRET_KEY = 'django-insecure-_-&fdo*r^(3^av_*vzrmibh_8nj7ilq8crka1-%%p@g%bvit4u
 DEBUG = True
 
 ALLOWED_HOSTS = []
+# settings.py
+
+# Set APPEND_SLASH to False
+APPEND_SLASH = False
 
 
 # Application definition
