@@ -36,3 +36,20 @@ def login(request):
 
 def home(request):
     return render(request,'home.html')
+
+
+def admin_login(request):
+    if request.method == "POST":
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        try:
+            user = User.objects.get(username=username, password=password)
+            return redirect('adminhome')
+        except User.DoesNotExist:
+            messages.error(request, 'Invalid username or password.')
+            return render(request, 'Admin/login.html')
+    return render(request, 'Admin/login.html')
+
+
+def adminhome(request):
+    return render(request,'Admin/Admin_home.html')
